@@ -8,6 +8,8 @@ package jvalidation;
  * Version  : 1.0
  * Desc     : Regx jlime.utils
  * Comment  : Need improvement
+ *
+ * https://www.regextester.com/
  */
 
 
@@ -61,7 +63,8 @@ public class RgxUtils {
 
 
     //final public static String RGX_PHONE_NO_BD = "^[+8]?[0-9]{10,13}$";
-    final public static String RGX_PHONE_NO_BD = "^(?:\\+?88)?01[15-9]\\d{8}$";
+    //final public static String RGX_PHONE_NO_BD = "^(?:\\+?88)?01[13-9]\\d{8}$";
+    final public static String RGX_PHONE_NO_BD = "^(?:\\+?88)?01[135-9]\\d{8}$";
     //final public static String RGX_PHONE_NO_BD = "/(^(\\+8801|8801|01|008801))[1|5-9]{1}(\\d){8}$/";
 
 

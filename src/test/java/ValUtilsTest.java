@@ -110,15 +110,18 @@ public class ValUtilsTest {
 
 
         //operator check
-        assertTrue(ValUtils.isValidPhoneNoBD("+8801834927083"));
+        assertTrue(ValUtils.isValidPhoneNoBD("+8801331587447"));
+        assertTrue(ValUtils.isValidPhoneNoBD("+8801531587447"));
         assertTrue(ValUtils.isValidPhoneNoBD("+8801689773843"));
         assertTrue(ValUtils.isValidPhoneNoBD("+8801731587447"));
-        assertTrue(ValUtils.isValidPhoneNoBD("+8801531587447"));
+        assertTrue(ValUtils.isValidPhoneNoBD("+8801834927083"));
+
+
 
         assertTrue(ValUtils.isValidPhoneNoBD("8801834927083"));
         assertTrue(ValUtils.isValidPhoneNoBD("01689773843"));
 
-
+        assertFalse(ValUtils.isValidPhoneNoBD("+8801431587447"));
         assertFalse(ValUtils.isValidPhoneNoBD("+7701731587447"));
         assertFalse(ValUtils.isValidPhoneNoBD("+88018349270833"));
         assertFalse(ValUtils.isValidPhoneNoBD("+18349270833"));
