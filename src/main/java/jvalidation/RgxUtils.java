@@ -70,6 +70,11 @@ public class RgxUtils {
     final public static String RGX_FULL_NAME_OR_FIRST_NAME = "^[\\p{L} .'-]+$";
     final public static String RGX_LAST_NAME = "^[\\p{L}]+$";
 
+    final public static String RGX_YEAR = "^\\d{4}$";            //1900 2099
+    //final public static String RGX_YEAR_1900_2099 = "(?:(?:19|20)[0-9]{2})";    //1900 2099
+    final public static String RGX_YEAR_1900_2099 = "^(19|20)\\d{2}$";    //1900 2099
+    final public static String RGX_YEAR_1000_2999 = "^[12][0-9]{3}$";    //1000 2999
+
 
     /**
      * Check wheather a string match with regex

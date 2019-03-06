@@ -8,6 +8,7 @@
  */
 
 
+import jvalidation.RgxUtils;
 import jvalidation.ValUtils;
 import org.junit.Test;
 
@@ -134,15 +135,15 @@ public class ValUtilsTest {
     public void testGetPhoneNoWithoutCodeBD() {
 
 
-        assertEquals("1834927083",ValUtils.getPhoneNoWithoutCodeBD("+8801834927083"));
-        assertEquals("1834927083",ValUtils.getPhoneNoWithoutCodeBD("8801834927083"));
-        assertEquals("1834927083",ValUtils.getPhoneNoWithoutCodeBD("01834927083"));
-        assertEquals("1834927083",ValUtils.getPhoneNoWithoutCodeBD("1834927083"));
+        assertEquals("1834927083", ValUtils.getPhoneNoWithoutCodeBD("+8801834927083"));
+        assertEquals("1834927083", ValUtils.getPhoneNoWithoutCodeBD("8801834927083"));
+        assertEquals("1834927083", ValUtils.getPhoneNoWithoutCodeBD("01834927083"));
+        assertEquals("1834927083", ValUtils.getPhoneNoWithoutCodeBD("1834927083"));
 
-        assertEquals("1884927083",ValUtils.getPhoneNoWithoutCodeBD("1884927083"));
+        assertEquals("1884927083", ValUtils.getPhoneNoWithoutCodeBD("1884927083"));
 
 
-        assertEquals("1834927088",ValUtils.getPhoneNoWithoutCodeBD("8801834927088"));
+        assertEquals("1834927088", ValUtils.getPhoneNoWithoutCodeBD("8801834927088"));
 
 
     }
@@ -200,6 +201,66 @@ public class ValUtilsTest {
 
 //        assertFalse(ValUtils.isValidFullName("Nasif Ahmed."));
 //        assertFalse(ValUtils.isValidFullName("NasifAhmed."));
+
+    }
+
+    @Test
+    public void testIsValidYear() {
+
+        assertTrue(ValUtils.isValidYear("1971"));
+        assertTrue(ValUtils.isValidYear("1871"));
+        assertTrue(ValUtils.isValidYear("1771"));
+        assertTrue(ValUtils.isValidYear("1671"));
+        assertTrue(ValUtils.isValidYear("0000"));
+
+        assertFalse(ValUtils.isValidYear("01700"));
+        assertFalse(ValUtils.isValidYear("19711"));
+        assertFalse(ValUtils.isValidYear("971"));
+
+
+//        assertFalse(ValUtils.isValidFullName("Nasif Ahmed."));
+//        assertFalse(ValUtils.isValidFullName("NasifAhmed."));
+
+    }
+
+    @Test
+    public void testIsValidYearByRange_1900_2099() {
+
+        assertTrue(ValUtils.isValidYearByRange("1900", RgxUtils.RGX_YEAR_1900_2099));
+        assertTrue(ValUtils.isValidYearByRange("1971", RgxUtils.RGX_YEAR_1900_2099));
+
+
+        assertFalse(ValUtils.isValidYearByRange("1771", RgxUtils.RGX_YEAR_1900_2099));
+        assertFalse(ValUtils.isValidYearByRange("-1971", RgxUtils.RGX_YEAR_1900_2099));
+        assertFalse(ValUtils.isValidYearByRange("1671", RgxUtils.RGX_YEAR_1900_2099));
+        assertFalse(ValUtils.isValidYearByRange("0000", RgxUtils.RGX_YEAR_1900_2099));
+        assertFalse(ValUtils.isValidYearByRange("01700", RgxUtils.RGX_YEAR_1900_2099));
+        assertFalse(ValUtils.isValidYearByRange("19711", RgxUtils.RGX_YEAR_1900_2099));
+        assertFalse(ValUtils.isValidYearByRange("971", RgxUtils.RGX_YEAR_1900_2099));
+
+
+    }
+
+
+    @Test
+    public void testIsValidYearByRange_1000_2999() {
+
+        assertTrue(ValUtils.isValidYearByRange("1000", RgxUtils.RGX_YEAR_1000_2999));
+        assertTrue(ValUtils.isValidYearByRange("2999", RgxUtils.RGX_YEAR_1000_2999));
+        assertTrue(ValUtils.isValidYearByRange("1980", RgxUtils.RGX_YEAR_1000_2999));
+        assertTrue(ValUtils.isValidYearByRange("1971", RgxUtils.RGX_YEAR_1000_2999));
+        assertTrue(ValUtils.isValidYearByRange("2000", RgxUtils.RGX_YEAR_1000_2999));
+        assertTrue(ValUtils.isValidYearByRange("2018", RgxUtils.RGX_YEAR_1000_2999));
+
+
+        assertFalse(ValUtils.isValidYearByRange("17701", RgxUtils.RGX_YEAR_1000_2999));
+        assertFalse(ValUtils.isValidYearByRange("-1971", RgxUtils.RGX_YEAR_1000_2999));
+        assertFalse(ValUtils.isValidYearByRange("3671", RgxUtils.RGX_YEAR_1000_2999));
+        assertFalse(ValUtils.isValidYearByRange("0000", RgxUtils.RGX_YEAR_1000_2999));
+        assertFalse(ValUtils.isValidYearByRange("01700", RgxUtils.RGX_YEAR_1000_2999));
+        assertFalse(ValUtils.isValidYearByRange("19711", RgxUtils.RGX_YEAR_1000_2999));
+        assertFalse(ValUtils.isValidYearByRange("971", RgxUtils.RGX_YEAR_1000_2999));
+
 
     }
 

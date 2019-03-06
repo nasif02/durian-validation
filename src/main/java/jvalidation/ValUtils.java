@@ -82,11 +82,11 @@ public class ValUtils {
      */
     public static String getPhoneNoWithoutCodeBD(String s) {
 
-        if(s.length()==14) return s.replace("+880", "");        //+8801689773843
+        if (s.length() == 14) return s.replace("+880", "");        //+8801689773843
 
         //now 13 or 11, but we need 10 : 8801689773843, 01689773843
-        if(s.length()==13)  return s.replaceFirst("880","");
-        if(s.length()==11)  return s.replaceFirst("0","");
+        if (s.length() == 13) return s.replaceFirst("880", "");
+        if (s.length() == 11) return s.replaceFirst("0", "");
 
         return s;
 
@@ -144,6 +144,30 @@ public class ValUtils {
     public static boolean isValidLastName(String s) {
 
         return RgxUtils.isMatch(s, RgxUtils.RGX_LAST_NAME);
+    }
+
+
+    /**
+     * Check whether a year is valid or not
+     *
+     * @param s
+     * @return
+     */
+    public static boolean isValidYear(String s) {
+
+        return RgxUtils.isMatch(s, RgxUtils.RGX_YEAR);
+    }
+
+
+    /**
+     * Check whether a year is valid or not by range
+     * @param year
+     * @param range
+     * @return
+     */
+    public static boolean isValidYearByRange(String year, String range) {
+
+        return RgxUtils.isMatch(year, range);
     }
 
 
