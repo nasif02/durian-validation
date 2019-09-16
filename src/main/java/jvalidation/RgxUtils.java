@@ -64,9 +64,10 @@ public class RgxUtils {
 
     //final public static String RGX_PHONE_NO_BD = "^[+8]?[0-9]{10,13}$";
     //final public static String RGX_PHONE_NO_BD = "^(?:\\+?88)?01[13-9]\\d{8}$";
-    final public static String RGX_PHONE_NO_BD = "^(?:\\+?88)?01[135-9]\\d{8}$";
+    final public static String RGX_PHONE_NO_BD = "^(?:\\+?88)?01[1345-9]\\d{8}$";
     //final public static String RGX_PHONE_NO_BD = "/(^(\\+8801|8801|01|008801))[1|5-9]{1}(\\d){8}$/";
 
+    final public static String RGX_PHONE_NO_KSA = "^((?:[+?0?0?966]+)(?:\\s?\\d{2})(?:\\s?\\d{7}))$";
 
 
     final public static String RGX_USERNAME = "^[a-zA-Z][a-zA-Z0-9._-]{2,}$";
