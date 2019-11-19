@@ -9,10 +9,6 @@ package jvalidation;
  * Comment  : Need improvement
  */
 
-import com.google.i18n.phonenumbers.NumberParseException;
-import com.google.i18n.phonenumbers.PhoneNumberUtil;
-import com.google.i18n.phonenumbers.Phonenumber;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -92,26 +88,6 @@ public class ValUtils {
 
     }
 
-
-    /**
-     * @param s
-     * @param countryCode
-     * @return
-     */
-    public static boolean isValidPhoneNo(String s, String countryCode) {
-
-        //NOTE: This should probably be a member variable.
-        PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
-
-        try {
-            Phonenumber.PhoneNumber numberProto = phoneUtil.parse(s, countryCode);
-            return phoneUtil.isValidNumber(numberProto);
-        } catch (NumberParseException e) {
-            System.err.println("NumberParseException was thrown: " + e.toString());
-        }
-
-        return false;
-    }
 
     /**
      * Check whether is full name valid or not

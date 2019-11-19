@@ -47,50 +47,22 @@ public class PhoneNoUtils {
     }
 
     /**
-     * Check whether a phone no valid or not in KSA
-     * <p>
-     * length 10 to 13 whithout (+) sign
+     * Method to check msisdn validity for globally
      *
-     * @param s
+     * @param msisdn          must be included +, like +8801834927083
+     * @param countryCodeName like bd, usa
      * @return boolean
      */
-    public static boolean isValidPhoneNoKSA(String s) {
-
-        return RgxUtils.isMatch(s, RgxUtils.RGX_PHONE_NO_KSA);
-    }
-
-    /**
-     * Remove +880 from phone no
-     *
-     * @param s
-     * @return
-     */
-    public static String getPhoneNoWithoutCodeKSA(String s) {
-
-        if (s.length() == 14) return s.replace("+966", "");        //+966 058 xxx xxxx
-        if (s.length() == 13) return s.replaceFirst("966", "");
-
-        return s;
-
-    }
-
-
-
-    /**
-     * @param s
-     * @param countryCode
-     * @return
-     */
-    public static boolean isValidPhoneNo(String s, String countryCode) {
+    public static boolean isMsisdnValidGlobally(String msisdn, String countryCodeName) {
 
         //NOTE: This should probably be a member variable.
         PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
 
         try {
-            Phonenumber.PhoneNumber numberProto = phoneUtil.parse(s, countryCode);
+            Phonenumber.PhoneNumber numberProto = phoneUtil.parse(msisdn, countryCodeName);
             return phoneUtil.isValidNumber(numberProto);
         } catch (NumberParseException e) {
-            System.err.println("NumberParseException was thrown: " + e.toString());
+            //Log.e(TAG, "isMsisdnValidGlobally: " + e.getMessage(), e);
         }
 
         return false;
